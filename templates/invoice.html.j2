@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 2.2cm; }
+  body { font-family: Helvetica, Arial, sans-serif; color: #1e293b; font-size: 11pt; }
+  .top { display: flex; justify-content: space-between; margin-bottom: 36px; }
+  .brand { font-size: 20pt; font-weight: bold; color: #0d9488; }
+  .company { font-size: 9pt; color: #64748b; text-align: right; line-height: 1.5; }
+  h1 { font-size: 14pt; letter-spacing: 0.08em; margin: 0 0 4px; }
+  .meta { color: #64748b; font-size: 9.5pt; margin-bottom: 28px; }
+  .billto { margin-bottom: 28px; }
+  .billto h2 { font-size: 9pt; text-transform: uppercase; color: #64748b; letter-spacing: 0.06em; margin-bottom: 6px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+  th { text-align: left; font-size: 9pt; text-transform: uppercase; color: #64748b; border-bottom: 2px solid #0d9488; padding: 8px 6px; }
+  td { padding: 10px 6px; border-bottom: 1px solid #e2e8f0; }
+  .num { text-align: right; }
+  .totals { width: 45%; margin-left: auto; }
+  .totals td { border: none; padding: 4px 6px; }
+  .totals .grand td { border-top: 2px solid #0d9488; font-weight: bold; font-size: 12pt; }
+  .footer { margin-top: 48px; font-size: 8.5pt; color: #94a3b8; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">{{ company_name }}</div>
+    <div class="company">{{ company_address }}<br>{{ company_email }}</div>
+  </div>
+
+  <h1>INVOICE {{ invoice_number }}</h1>
+  <p class="meta">Issue date: {{ issue_date }}</p>
+
+  <div class="billto">
+    <h2>Billed to</h2>
+    {{ client_name }}<br>
+    {{ client_email }}
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Description</th><th>Date</th><th class="num">Amount</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ service_type | capitalize }}{% if location %} — {{ location }}{% endif %}</td>
+        <td>{{ service_date }} {{ service_time }}</td>
+        <td class="num">{{ net }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="totals">
+    <tr><td>Subtotal</td><td class="num">{{ net }}</td></tr>
+    <tr><td>VAT ({{ vat_pct }}%)</td><td class="num">{{ vat }}</td></tr>
+    <tr class="grand"><td>Total due</td><td class="num">{{ total }}</td></tr>
+  </table>
+
+  <p class="footer">
+    Generated automatically by the {{ company_name }} booking pipeline.
+    Payment terms: 14 days from issue date.
+  </p>
+</body>
+</html>

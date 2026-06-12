@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Pipeline — Admin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Booking Pipeline</h1>
+      <p class="subtitle">Inbound enquiries, extracted and routed automatically</p>
+    </div>
+    <button id="refresh-btn" class="btn btn-ghost">Refresh</button>
+  </header>
+
+  <nav id="filters">
+    <button class="filter active" data-status="">All</button>
+    <button class="filter" data-status="ONHOLD">On hold</button>
+    <button class="filter" data-status="CONFIRMED">Confirmed</button>
+    <button class="filter" data-status="INVOICED">Invoiced</button>
+    <button class="filter" data-status="REJECTED">Rejected</button>
+  </nav>
+
+  <main>
+    <table id="bookings-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Client</th>
+          <th>Service</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="bookings-body"></tbody>
+    </table>
+    <p id="empty-state" class="hidden">No bookings yet — the poller runs on startup and every 10 minutes.</p>
+  </main>
+
+  <aside id="drawer" class="hidden">
+    <div class="drawer-header">
+      <h2>Booking detail</h2>
+      <button id="drawer-close" class="btn btn-ghost">Close</button>
+    </div>
+    <div id="drawer-content"></div>
+  </aside>
+  <div id="drawer-backdrop" class="hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

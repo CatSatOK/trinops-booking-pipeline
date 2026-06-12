@@ -1,0 +1,38 @@
+[
+  {
+    "thread_id": "seed-thread-001",
+    "sender": "Client X <client.x@example.com>",
+    "subject": "Booking request - consultation",
+    "body": "Hi,\n\nMy name is Client X. I'd like to book a consultation next Tuesday at 10am at 12 Sample Street, Example Town.\n\nLooking forward to hearing from you.\n\nKind regards,\nClient X"
+  },
+  {
+    "thread_id": "seed-thread-002",
+    "sender": "Client Y <client.y@example.com>",
+    "subject": "Installation booking",
+    "body": "Hello,\n\nThis is Client Y. Could you fit us in for an installation next Wednesday at 1pm? The address is 7 Demo Road, Sampletown.\n\nMany thanks,\nClient Y"
+  },
+  {
+    "thread_id": "seed-thread-003",
+    "sender": "Company A <ops@company-a.example.com>",
+    "subject": "Maintenance visit",
+    "body": "Hi team,\n\nWe'd like to arrange a maintenance visit next Thursday at 2:30pm.\nSite: Unit 4, Example Industrial Estate\n\nRegards,\nOperations, Company A"
+  },
+  {
+    "thread_id": "seed-thread-004",
+    "sender": "Client Z <client.z@example.com>",
+    "subject": "Question about surveys",
+    "body": "Hi,\n\nDo you carry out surveys? We may need one at some point and wanted to check what you offer first.\n\nThanks,\nClient Z"
+  },
+  {
+    "thread_id": "seed-thread-005",
+    "sender": "Client W <client.w@example.com>",
+    "subject": "Evening consultation?",
+    "body": "Hello,\n\nI'm Client W - could I get a consultation next Friday at 7pm? Daytime is tricky for me. I'm based at 9 Test Lane, Exampleville.\n\nThanks,\nClient W"
+  },
+  {
+    "thread_id": "seed-thread-006",
+    "sender": "Client V <client.v@example.com>",
+    "subject": "Inspection needed",
+    "body": "<html><body><p>Hi there,</p><p>This is Client V. We need an <b>inspection</b> tomorrow at 9am if possible.</p><p>Location: 22 Mock Avenue, Testford</p><p>Book online here: https://example.com/booking</p><p>Cheers,<br>Client V</p></body></html>"
+  }
+]

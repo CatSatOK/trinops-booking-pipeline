@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Helvetica, Arial, sans-serif; color: #1e293b; max-width: 560px; margin: 0 auto;">
+  <div style="background: #0f172a; color: #ffffff; padding: 20px 28px; border-radius: 8px 8px 0 0;">
+    <strong style="color: #2dd4bf;">{{ company_name }}</strong>
+  </div>
+  <div style="border: 1px solid #e2e8f0; border-top: none; padding: 28px; border-radius: 0 0 8px 8px;">
+    <h2 style="margin-top: 0;">Your booking is confirmed</h2>
+    <p>Hi {{ client_name }},</p>
+    <p>Thanks for your enquiry — your booking is confirmed:</p>
+    <table style="border-collapse: collapse; margin: 16px 0;">
+      <tr><td style="padding: 4px 16px 4px 0; color: #64748b;">Service</td><td>{{ service_type | capitalize }}</td></tr>
+      <tr><td style="padding: 4px 16px 4px 0; color: #64748b;">Date</td><td>{{ service_date }}</td></tr>
+      <tr><td style="padding: 4px 16px 4px 0; color: #64748b;">Time</td><td>{{ service_time }}</td></tr>
+      {% if location %}<tr><td style="padding: 4px 16px 4px 0; color: #64748b;">Location</td><td>{{ location }}</td></tr>{% endif %}
+    </table>
+    <p>Your invoice is attached. If anything needs to change, just reply to this email.</p>
+    <p style="color: #64748b; font-size: 13px;">{{ company_name }} — {{ company_email }}</p>
+  </div>
+</body>
+</html>
