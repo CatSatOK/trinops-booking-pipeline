@@ -126,5 +126,6 @@ tbody tr:hover { background: var(--surface-2); }
 }
 
 .reason { color: #fbbf24; font-size: 0.84rem; margin-bottom: 18px; }
+.reason-history { color: var(--muted); font-size: 0.8rem; margin-bottom: 18px; }
 .drawer-actions { display: flex; gap: 10px; }
 .error-msg { color: var(--danger); font-size: 0.82rem; margin-top: 12px; }

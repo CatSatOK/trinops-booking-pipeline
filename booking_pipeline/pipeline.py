@@ -16,7 +16,7 @@ from booking_pipeline.email_ingestion import EmailSource, IncomingEmail
 from booking_pipeline.extractor import extract_fields
 from booking_pipeline.invoice import generate_invoice
 from booking_pipeline.logging_conf import get_logger
-from booking_pipeline.models import Booking, BookingStatus
+from booking_pipeline.models import Booking, BookingStatus, utcnow
 from booking_pipeline.notifier import Notifier, send_confirmation, send_onhold_ack
 
 logger = get_logger(__name__)
@@ -116,6 +116,7 @@ def confirm_booking(
     booking.invoice_path = generate_invoice(booking, settings)
     send_confirmation(booking, notifier, settings)
     booking.status = BookingStatus.INVOICED
+    booking.invoiced_at = utcnow()
     session.flush()
     logger.info("booking %d confirmed and invoiced", booking.id)
 

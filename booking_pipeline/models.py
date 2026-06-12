@@ -47,6 +47,7 @@ class Booking(Base):
 
     calendar_event_id: Mapped[str | None] = mapped_column(String(128))
     invoice_path: Mapped[str | None] = mapped_column(String(500))
+    invoiced_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     updated_at: Mapped[datetime] = mapped_column(

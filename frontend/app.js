@@ -55,8 +55,15 @@ function openDrawer(booking) {
       <dt>Thread</dt><dd>${esc(booking.gmail_thread_id)}</dd>
       <dt>Calendar event</dt><dd>${esc(booking.calendar_event_id) || "—"}</dd>
       <dt>Invoice</dt><dd>${esc(booking.invoice_path) || "—"}</dd>
+      ${booking.invoiced_at ? `<dt>Invoiced</dt><dd>${formatTimestamp(booking.invoiced_at)}</dd>` : ""}
     </dl>
-    ${booking.onhold_reason ? `<p class="reason">On hold: ${esc(booking.onhold_reason)}</p>` : ""}
+    ${
+      booking.status === "ONHOLD"
+        ? `<p class="reason">On hold: ${esc(booking.onhold_reason)}</p>`
+        : booking.onhold_reason
+          ? `<p class="reason-history">Previously on hold: ${esc(booking.onhold_reason)}</p>`
+          : ""
+    }
     <h3 style="font-size:0.8rem;color:var(--muted);margin-bottom:6px;">ORIGINAL EMAIL</h3>
     <div class="snippet">${esc(booking.raw_email_snippet)}</div>
     ${
@@ -110,6 +117,13 @@ async function patchSelected(url, payload) {
   }
   closeDrawer();
   await loadBookings();
+}
+
+function formatTimestamp(iso) {
+  const d = new Date(iso);
+  return d.toLocaleString(undefined, {
+    year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit",
+  });
 }
 
 function esc(value) {

@@ -1,7 +1,7 @@
 """Booking endpoints: list, accept (with optional field corrections), reject."""
 
 from collections.abc import Iterator
-from datetime import date, time
+from datetime import date, datetime, time
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, ConfigDict
@@ -39,6 +39,7 @@ class BookingOut(BaseModel):
     onhold_reason: str | None
     calendar_event_id: str | None
     invoice_path: str | None
+    invoiced_at: datetime | None
 
 
 class AcceptPayload(BaseModel):
@@ -89,7 +90,11 @@ def accept_booking(
     calendar = get_calendar_client(settings)
     start, end = slot_for(booking.requested_date, booking.requested_time, settings)
     if not within_business_hours(start, end, settings):
-        raise HTTPException(status_code=409, detail="requested time is outside business hours")
+        raise HTTPException(
+            status_code=409,
+            detail=f"requested time is outside business hours "
+            f"({settings.business_start_hour:02d}:00–{settings.business_end_hour:02d}:00)",
+        )
     if not calendar.is_available(start, end):
         raise HTTPException(status_code=409, detail="requested slot is still unavailable")
 
